@@ -1,0 +1,13 @@
+src-tauri/target/
+
+src-tauri/gen/
+
+.flatpak-builder/
+_flatpak_build/
+*.flatpak
+
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.log
