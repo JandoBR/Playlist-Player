@@ -1,19 +1,38 @@
+# 🎵 Playlist Player
 
-# 🎵 Playlist-Player
-
-Un reproductor de música ligero y enfocado en el almacenamiento local, construido con **Tauri** y **Rust**. Esta aplicación convierte cualquier lista de reproducción de YouTube en una biblioteca local, manteniendo tu música actualizada en tu equipo.
+A lightweight, local-first music player built with **Tauri** and **Rust**. Give it a
+YouTube playlist URL and it keeps a local copy of the tracks, synced.
 
 https://github.com/user-attachments/assets/4f7f9500-e655-44fb-a3e7-892e6786dbaa
 
-## ✨ Características
+## Features
 
-* **Sincronización con YouTube**: Solo proporciona la URL de una lista de reproducción y la aplicación utiliza `yt-dlp` para descargar y sincronizar la música localmente.
-* **Actualización Automática**: Mantiene tu biblioteca de música local siempre al día con los cambios en la fuente de YouTube.
-* **Reproducción Aleatoria (Shuffle-Only)**: Diseñado para una experiencia sin complicaciones: la música se reproduce exclusivamente en orden aleatorio.
-* **Integración con la Bandeja del Sistema (Tray)**: <img src="https://github.com/user-attachments/assets/89b9b2c3-ac55-4754-b50f-752f70d50d7e" align="right" width="178" height="214" alt="Tray Menu"> Control total desde el icono de la barra de tareas. Puedes gestionar la reproducción, saltar pistas o cambiar la visibilidad de la ventana sin necesidad de abrir la interfaz principal.
+- **YouTube sync:** point it at a playlist and it downloads and syncs the tracks locally
+  with `yt-dlp`.
+- **Stays up to date:** the local library follows changes in the source playlist.
+- **Shuffle only:** playback is random by design, no queue management.
+- **Tray icon:** <img src="https://github.com/user-attachments/assets/89b9b2c3-ac55-4754-b50f-752f70d50d7e" align="right" width="178" height="214" alt="Tray menu"> play, skip and show or hide the window without opening the main UI.
+- **Frameless window** with its own controls.
+- **Keyboard shortcuts:** local ones when focused, global ones while you work elsewhere.
 
-* **Gestión Inteligente de Ventanas**: 
-    * Botones internos ocultos para ocultar o cerrar la ventana instantáneamente.
-* **Atajos de Teclado**:
-    * **Locales**: Controles estándar cuando la aplicación está enfocada.
-    * **Globales**: Controla tu música incluso mientras trabajas en otras aplicaciones.
+## Requirements
+
+- Rust and the Tauri v2 CLI
+- `yt-dlp` on `PATH`
+- A desktop with an audio output (Linux, macOS or Windows)
+
+## Run it
+
+```bash
+cargo install tauri-cli --version "^2"
+cargo tauri dev
+```
+
+Build a bundle with `cargo tauri build`.
+
+## Layout
+
+```
+src/           plain HTML, CSS and JS frontend (no bundler)
+src-tauri/     Rust backend: player, playlist sync, tray and shortcuts
+```
